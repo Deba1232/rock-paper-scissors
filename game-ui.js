@@ -5,7 +5,7 @@ let playerChoiceResult = resultWindow.querySelector('.user-choice');
 let opponentChoiceResult = resultWindow.querySelector('.opponent-choice');
 
 selector2.addEventListener('click', function(e){
-    // document.location.reload();
+
     if (e.target.children.length < 3){
 
         if (resultWindow.querySelector('.user-choice img') !== null) {
