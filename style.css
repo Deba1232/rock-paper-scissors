@@ -82,6 +82,10 @@ header{
     margin-top: 4em;
 }
 .result-window img{
-    width:150px;
-    height:150px;
+    width:200px;
+    height:200px;
+    background-color: #e75697;
+    padding: 0.2em;
+    border: 0.2em solid #8a2c0d;
+    border-radius: 8px;
 }
