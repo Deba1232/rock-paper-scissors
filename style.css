@@ -80,5 +80,8 @@ header{
 
 .result-window{
     margin-top: 4em;
-    /* background-color: #8a2c0d; */
+}
+.result-window img{
+    width:150px;
+    height:150px;
 }
