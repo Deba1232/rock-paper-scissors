@@ -27,9 +27,13 @@ let game = (userChoice, opponentChoice) => {
 
 const opponentOptions = ['Rock','Paper','Scissors'];
 
+let image = new Image();
+const images = [image.src = './images/rock.png', image.src = './images/paper.png', image.src = './images/scissor.png']
+
 let randomChoice; 
 let userChoice;
 let opponentChoice;
+let opponentChoiceImage;
 
 let playerPoints = 0;
 let opponentPoints = 0;
@@ -53,7 +57,9 @@ selector.addEventListener('click', function(e) {
         console.log(userChoice);
 
         randomChoice = Math.floor(Math.random() * opponentOptions.length);
+        
         opponentChoice = opponentOptions[randomChoice];
+        opponentChoiceImage = images[randomChoice];
 
         let result = game(userChoice.toUpperCase(), opponentChoice.toUpperCase());
 
