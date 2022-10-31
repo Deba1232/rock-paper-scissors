@@ -1,50 +1,30 @@
-let resultWindow = document.querySelector('.choices');
+// let selector = document.querySelector('.warrior-list');
+let resultWindow = document.querySelector('.score-box');
 
-let playerChoiceResult = resultWindow.querySelector('.user-choice');
-let opponentChoiceResult = resultWindow.querySelector('.opponent-choice');
+let playerChoiceResult = resultWindow.querySelector('.user-choice-image');
+let opponentChoiceResult = resultWindow.querySelector('.opponent-choice-image');
 
-selector.addEventListener('click', function(e){
+selector.addEventListener('click', function (e) {
 
-    if (e.target.children.length < 3){                                                      // this condition is given so that even if the gaps between the cards are clicked nothing happens
+    if (e.target.children.length < 3) {                                                      // this condition is given so that even if the gaps between the cards are clicked nothing happens
 
-        if (resultWindow.querySelector('.user-choice img') !== null) {                      // condition for images not stacking side by side
-            playerChoiceResult.removeChild(playerChoiceResult.firstElementChild);
-            opponentChoiceResult.removeChild(opponentChoiceResult.firstElementChild);
+        if (e.target.nodeName != 'DIV') {
 
-            if (e.target.nodeName != 'DIV') {                                               // this condition is given so that we get the image element if the image or the button is clicked
-
-                let childElements = e.target.parentElement.children;
-                playerChoiceResult.insertAdjacentElement('beforeend', childElements[0].cloneNode());
-
-            }
-
-            else {                                                                          // this condition is given so that we get the image element when anything other than the image or button is clicked in the cards
-                let childElements = e.target.children;
-                playerChoiceResult.insertAdjacentElement('beforeend', childElements[0].cloneNode());
-            }
+            let childElements = e.target.parentElement.children;
+            playerChoiceResult.src = childElements[0].src;
+            playerChoiceResult.alt = childElements[0].alt;
+        
         }
 
         else {
-
-            if (e.target.nodeName != 'DIV') {
-
-                let childElements = e.target.parentElement.children;
-                playerChoiceResult.insertAdjacentElement('beforeend', childElements[0].cloneNode());
-
-            }
-
-            else {
-                let childElements = e.target.children;
-                playerChoiceResult.insertAdjacentElement('beforeend', childElements[0].cloneNode());
-            }
-
-            
-
+            let childElements = e.target.children;
+            playerChoiceResult.src = childElements[0].src;
+            playerChoiceResult.alt = childElements[0].alt;
         }
         
-        let opponentImage = `<img src = ${opponentChoiceImage} alt = ${opponentChoice}></img>`;
-        opponentChoiceResult.insertAdjacentHTML('beforeend', opponentImage);
+        opponentChoiceResult.src = opponentChoiceImage;
+        opponentChoiceResult.alt = opponentChoice;
 
     }
-    
+
 });
