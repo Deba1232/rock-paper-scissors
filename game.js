@@ -7,10 +7,10 @@ let game = (userChoice, opponentChoice) => {
         return 'You lost';
 
     else if (userChoice === 'ROCK' && opponentChoice === 'SCISSORS')
-        return 'You win';
+        return 'You won';
 
     else if (userChoice === 'PAPER' && opponentChoice === 'ROCK')
-        return 'You win';
+        return 'You won';
 
     else if (userChoice === 'PAPER' && opponentChoice === 'SCISSORS')
         return 'You lost';
@@ -19,7 +19,7 @@ let game = (userChoice, opponentChoice) => {
         return 'You lost';
 
     else if (userChoice === 'SCISSORS' && opponentChoice === 'PAPER')
-        return 'You win';
+        return 'You won';
 
     else
         return 'You made an invalid choice';
@@ -42,6 +42,8 @@ let playCount = 0;
 
 let selector = document.querySelector('.warrior-list');
 
+let subTextSelector = document.querySelector('.sub-text');
+
 selector.addEventListener('click', function(e) {
 
     if (e.target.children.length < 3){
@@ -54,8 +56,6 @@ selector.addEventListener('click', function(e) {
             userChoice = e.target.textContent.replace(/\s/g, '');
         }
 
-        console.log(userChoice);
-
         randomChoice = Math.floor(Math.random() * opponentOptions.length);
         
         opponentChoice = opponentOptions[randomChoice];
@@ -63,18 +63,21 @@ selector.addEventListener('click', function(e) {
 
         let result = game(userChoice.toUpperCase(), opponentChoice.toUpperCase());
 
-        console.log(opponentChoice, result);
-
-        if (result === 'You win') {
+        if (result === 'You won') {
             playerPoints++;
+            subTextSelector.textContent = 'You won';
+            subTextSelector.innerHTML += `<p>${userChoice} beats ${opponentChoice}</p>`;
         }
 
         else if (result === 'You lost') {
             opponentPoints++;
+            subTextSelector.textContent = 'You lost';
+            subTextSelector.innerHTML += `<p>${userChoice} is beaten by ${opponentChoice}</p>`;
         }
 
         else {
-            console.log('No points added');
+            subTextSelector.textContent = 'It\'s a tie';
+            subTextSelector.innerHTML += '<p>Same choices were made</p>';
         }
 
 
