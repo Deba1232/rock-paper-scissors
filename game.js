@@ -80,9 +80,6 @@ function scoreSystem(e) {
             subTextSelector.innerHTML += '<p>Same choices were made</p>';
         }
 
-
-        console.log(`Your Score : ${playerPoints}\nOpponent's score : ${opponentPoints}`);
-
         finalScore(playerPoints, opponentPoints);
     
     }

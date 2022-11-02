@@ -126,7 +126,7 @@ header{
     left: 0;
     z-index: 1;
     overflow: auto;
-    background-color: rgba(0,0,0,0.89);
+    background-color: rgba(0,0,0,0.85);
     padding-top: 15em;
 }
 .result-box .result-box-content{
