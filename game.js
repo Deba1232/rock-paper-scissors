@@ -25,28 +25,28 @@ let game = (userChoice, opponentChoice) => {
         return 'You made an invalid choice';
 };
 
-const opponentOptions = ['Rock','Paper','Scissors'];
-
-let image = new Image();
-const images = [image.src = './images/rock.png', image.src = './images/paper.png', image.src = './images/scissor.png']
-
-let randomChoice; 
+let randomChoice;
 let userChoice;
 let opponentChoice;
 let opponentChoiceImage;
 
+let opponentOptions = ['Rock','Paper','Scissors'];
+
+let image = new Image();
+let images = [image.src = './images/rock.png', image.src = './images/paper.png', image.src = './images/scissor.png']
+
 let playerPoints = 0;
 let opponentPoints = 0;
-
-let playCount = 0;
 
 let selector = document.querySelector('.warrior-list');
 
 let subTextSelector = document.querySelector('.sub-text');
 
-selector.addEventListener('click', function(e) {
+selector.addEventListener('click', scoreSystem);
 
-    if (e.target.children.length < 3){
+function scoreSystem(e) {
+
+    if (e.target.children.length < 3) {
 
         if (e.target.alt !== undefined) {
             userChoice = e.target.alt;
@@ -57,7 +57,7 @@ selector.addEventListener('click', function(e) {
         }
 
         randomChoice = Math.floor(Math.random() * opponentOptions.length);
-        
+
         opponentChoice = opponentOptions[randomChoice];
         opponentChoiceImage = images[randomChoice];
 
@@ -83,59 +83,20 @@ selector.addEventListener('click', function(e) {
 
         console.log(`Your Score : ${playerPoints}\nOpponent's score : ${opponentPoints}`);
 
+        finalScore(playerPoints, opponentPoints);
+    
     }
-    
 
-});
-
-
-function result(playerPoints, opponentPoints){
-    if (playerPoints > opponentPoints)
-        console.log("You win!");
-
-    else if (playerPoints < opponentPoints)
-        console.log("You lost!");
-
-    else
-        console.log("It's a draw!");
 }
 
+function finalScore(playerPoints, opponentPoints) {
+    if (playerPoints === 5) {
+        selector.removeEventListener('click', scoreSystem);
+    }
 
 
+    else if (opponentPoints === 5) {
+        selector.removeEventListener('click', scoreSystem);
+    }
 
-
-
-
-
-/* for (i=0;i<5;i++){
-    
-    
-    console.log(userChoice);
-
-    randomChoice = Math.floor(Math.random() * opponentOptions.length);
-    opponentChoice = opponentOptions[randomChoice];
-
-    let result = game(userChoice.toUpperCase(), opponentChoice.toUpperCase());
-
-    // console.log(opponentChoice,result);
-
-    if (result === 'You win')
-        playerPoints++;
-
-    else if (result === 'You lost')
-        opponentPoints++;
-
-    else
-        console.log('No points added');
 }
-
-console.log(`Your Score : ${playerPoints}\nOpponent's score : ${opponentPoints}`);
-
-if (playerPoints > opponentPoints)
-    console.log("You win!");
-
-else if (playerPoints < opponentPoints)
-    console.log("You lost!");
-
-else
-    console.log("It's a draw!"); */
